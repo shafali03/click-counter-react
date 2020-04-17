@@ -10,3 +10,9 @@ test('renders without error', () => {
   const appComponent = wrapper.find("[data-test='component-app']");
   expect(appComponent.length).toBe(1);
 });
+
+test('render counter display', () => {
+  const wrapper = shallow(<App />);
+  const counterDisplay = wrapper.find("[data-test='counter-display']")
+  expect(counterDisplay.length).toBe(1)
+})
