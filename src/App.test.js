@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16'
+
 import App from './App';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
@@ -105,6 +106,7 @@ describe('Decrement', () => {
     // find button and click
     const button = findByTestAttr(wrapper, 'decrement-button');
     button.simulate('click');
+    wrapper.update();
 
     //find display and test value
     const counterDisplay = findByTestAttr(wrapper, 'counter-display');
@@ -117,6 +119,9 @@ describe('Decrement', () => {
 
     const wrapper = setup();
     const errorDiv = findByTestAttr(wrapper, 'error-message')
+
+    const errorHasHiddenClass = errorDiv.hasClass('hidden');
+    expect(errorHasHiddenClass).toBe(true);
   });
 
 
@@ -130,6 +135,29 @@ describe('Decrement', () => {
       const button = findByTestAttr(wrapper, 'decrement-button');
       button.simulate('click');
       wrapper.update();
+    });
+
+    test('error shows', () => {
+      const errorDiv = findByTestAttr(wrapper, 'error-message');
+      const errorHasHiddenClass = errorDiv.hasClass('hidden');
+      expect(errorHasHiddenClass).toBe(false);
     })
-  })
+
+    test('counter still display 0', () => {
+      const counterDisplay = findByTestAttr(wrapper, 'counter-display');
+      expect(counterDisplay.text()).toContain(0);
+    });
+
+    test('click increment to clear the error', () => {
+      // find and click the increment button
+      const button = findByTestAttr(wrapper, 'increment-button');
+      button.simulate('click');
+
+
+      // check the class of the error message
+      const errorDiv = findByTestAttr(wrapper, 'error-message');
+      const errorHasHiddenClass = errorDiv.hasClass('hidden');
+      expect(errorHasHiddenClass).toBe(true);
+    })
+  });
 });
