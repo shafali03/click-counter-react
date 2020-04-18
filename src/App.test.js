@@ -66,6 +66,7 @@ test('click button increment counter display', () => {
 
 describe('Increment', () => {
 
+
   test('renders increment button', () => {
     const wrapper = setup();
     const button = findByTestAttr(wrapper, 'increment-button');
@@ -89,6 +90,8 @@ describe('Increment', () => {
 
 
 describe('Decrement', () => {
+
+
   test('renders decrement button', () => {
     const wrapper = setup();
     const button = findByTestAttr(wrapper, 'decrement-button');
@@ -108,4 +111,25 @@ describe('Decrement', () => {
     expect(counterDisplay.text()).toContain(counter - 1)
   });
 
+
+  // error does not show by default
+  test('error does not show when not needed', () => {
+
+    const wrapper = setup();
+    const errorDiv = findByTestAttr(wrapper, 'error-message')
+  });
+
+
+  describe('counter is 0 and decrement is clicked', () => {
+
+    let wrapper
+    beforeEach(() => {
+
+      wrapper = setup();
+
+      const button = findByTestAttr(wrapper, 'decrement-button');
+      button.simulate('click');
+      wrapper.update();
+    })
+  })
 });
