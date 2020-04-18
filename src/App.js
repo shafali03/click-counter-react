@@ -7,9 +7,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      counter: 0
+      counter: 0,
+      error: false,
     };
 
+    //  bind this for decrementCounter and incrementCounter, since they use
+    // this.state and this.setState
     this.decrementCounter = this.decrementCounter.bind(this)
     this.incrementCounter = this.incrementCounter.bind(this)
   }
@@ -30,14 +33,14 @@ class App extends Component {
     this.setState({ counter: this.state.counter + 1 });
   }
 
-
-
-
   render() {
+    // determine weather error is hidden based on state
+    const errorClass = this.state.error ? '' : 'hidden';
+
     return (
       <div data-test="component-app">
-        <h1 data-test="counter-display">The counter is currently  {this.state.counter}</h1>
-        <div data-test="error-message">
+        <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
+        <div data-test="error-message" className={`error ${errorClass}`}>
           The counter cannot go below 0
         </div>
         <button
