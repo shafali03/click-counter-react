@@ -44,16 +44,16 @@ class App extends Component {
           The counter cannot go below 0
         </div>
         <button
-          data-test="increment-button"
-          onClick={this.incrementCounter}
-        >
-          Increment counter
-        </button>
-        <button
           data-test="decrement-button"
           onClick={this.decrementCounter}
         >
           Decrement counter
+        </button>
+        <button
+          data-test="increment-button"
+          onClick={this.incrementCounter}
+        >
+          Increment counter
         </button>
       </div>
     );
