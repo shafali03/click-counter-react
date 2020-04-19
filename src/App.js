@@ -38,23 +38,25 @@ class App extends Component {
     const errorClass = this.state.error ? '' : 'hidden';
 
     return (
-      <div data-test="component-app">
-        <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
-        <div data-test="error-message" className={`error ${errorClass}`}>
-          The counter cannot go below 0
+      <div className="container">
+        <div data-test="component-app" className="comp">
+          <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
+          <div data-test="error-message" className={`error ${errorClass}`}>
+            The counter cannot go below 0
         </div>
-        <button
-          data-test="decrement-button"
-          onClick={this.decrementCounter}
-        >
-          Decrement counter
+          <button
+            data-test="decrement-button"
+            onClick={this.decrementCounter}
+          >
+            Decrement counter
         </button>
-        <button
-          data-test="increment-button"
-          onClick={this.incrementCounter}
-        >
-          Increment counter
+          <button
+            data-test="increment-button"
+            onClick={this.incrementCounter}
+          >
+            Increment counter
         </button>
+        </div>
       </div>
     );
   }

@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px; 
+    width: 400px;
+    margin-left: -200px;
+}
+
 .error {
   font-size: 150%;
   color: #EC0B43;
