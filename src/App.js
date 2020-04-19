@@ -39,7 +39,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <div data-test="component-app" className="comp">
+        <div data-test="component-app">
           <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
           <div data-test="error-message" className={`error ${errorClass}`}>
             The counter cannot go below 0
